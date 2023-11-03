@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Введите команду</title>
+</head>
+<body>
+    <h1>Введите команду:</h1>
+    <form method="post" action="/input_page">
+        <label>
+            <input type="text" name="command" placeholder="Введите команду" required>
+        </label>
+        <button type="submit">Отправить</button>
+    </form>
+    {% if command %}
+        <h2>Отправленная команда: {{ command }}</h2>
+    {% endif %}
+    {% if response %}
+        <h2>Ответ: {{ response }}</h2>
+    {% endif %}
+</body>
+</html>

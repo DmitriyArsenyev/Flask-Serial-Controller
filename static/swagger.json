@@ -1,0 +1,106 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "title": "Flask Serial API",
+    "version": "1.0",
+    "description": "API for controlling LED and other devices through Flask and serial communication."
+  },
+  "basePath": "/",
+  "paths": {
+    "/led_bin_ON": {
+      "post": {
+        "summary": "Enable LED.",
+        "responses": {
+          "200": {
+            "description": "LED is ON"
+          }
+        }
+      }
+    },
+    "/led_bin_OFF": {
+      "post": {
+        "summary": "Disable LED.",
+        "responses": {
+          "200": {
+            "description": "LED is OFF"
+          }
+        }
+      }
+    },
+    "/get_status": {
+      "post": {
+        "summary": "Get LED status.",
+        "responses": {
+          "200": {
+            "description": "LED status"
+          }
+        }
+      }
+    },
+    "/set_brightness": {
+      "post": {
+        "summary": "Set LED brightness.",
+        "parameters": [
+          {
+            "name": "value",
+            "in": "query",
+            "type": "integer",
+            "minimum": 0,
+            "maximum": 65535,
+            "description": "Brightness value for the LED (0 to 65535)."
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Brightness set successfully"
+          },
+          "400": {
+            "description": "Invalid brightness value"
+          }
+        }
+      }
+    },
+    "/set_flash": {
+      "post": {
+        "summary": "Enable or disable flashing mode for the LED.",
+        "parameters": [
+          {
+            "name": "value",
+            "in": "query",
+            "type": "boolean",
+            "description": "Enable (true) or disable (false) flashing mode."
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Flashing mode updated successfully"
+          },
+          "400": {
+            "description": "Invalid value for flashing mode"
+          }
+        }
+      }
+    },
+    "/set_potentiometer": {
+      "post": {
+        "summary": "Enable or disable potentiometer control for the LED.",
+        "parameters": [
+          {
+            "name": "value",
+            "in": "query",
+            "type": "boolean",
+            "description": "Enable (true) or disable (false) potentiometer control."
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Potentiometer control updated successfully"
+          },
+          "400": {
+            "description": "Invalid value for potentiometer control"
+          }
+        }
+      }
+    }
+  }
+}
